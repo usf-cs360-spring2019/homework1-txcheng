@@ -96,14 +96,16 @@
 
       <!-- include d3.js -->
       <script src="https://d3js.org/d3.v5.min.js"></script>
-      <script src="vis3.js"></script>
+      <!--<script src="vis3.js"></script>-->
+      <script src="vis2.js"></script>
       <script type="text/javascript">
         //load the dataset
         d3.json("data.json").then(function(data){
            console.log("Data loaded:");
-           console.log(data[0]["Incident Day of Week"]);
+           console.log(data[0]["Incident Time"]);
            //generate my map
-           let chart = crimePerWeekday(data);
+           //let chart = crimePerWeekday(data);
+           let chart = crimePerHour(data);
            console.log(chart);
            drawBarChart(chart);
          });
