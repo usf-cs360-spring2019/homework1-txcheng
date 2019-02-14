@@ -31,8 +31,8 @@ var drawBarChart = function(count)
   let countMax = 800;
   let margin = {
     top:    15,
-    right:  35, // leave space for y-axis
-    bottom: 30, // leave space for x-axis
+    right:  80, // leave space for y-axis
+    bottom: 40, // leave space for x-axis
     left:   10
   };
   //calculate how much space we have to plot
@@ -79,11 +79,22 @@ var drawBarChart = function(count)
     // notice it is at the top of our svg
     // we need to translate/shift it down to the bottom
     xGroup.attr("transform", "translate(0," + plotHeight + ")");
-
+    let xLabel = plot.append("text")
+      .attr("transform",
+            "translate(" + ( plotWidth )/2 + " ," +
+                           ( margin.bottom - 10 + plotHeight) + ")")
+      .style("text-anchor", "middle")
+      .text("Hour of the Day");
     // do the same for our y axix
     let yGroup = plot.append("g").attr("id", "y-axis");
     yGroup.call(yAxis);
     yGroup.attr("transform", "translate(" + plotWidth + ",0)");
+    let yLabel = plot.append("text")
+      .attr("transform",
+            "translate(" + (plotWidth + margin.right-30)+ " ," +
+                           (plotHeight/2) + ") rotate(90)")
+      .style("text-anchor", "middle")
+      .text("Number of Crimes");
   }
   else {
     // we need to do this so our chart updates

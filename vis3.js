@@ -25,25 +25,23 @@ var drawBarChart = function(count)
   let svg = d3.select("body").select("svg");
   //set the range
   let countMin = 0;
-  let countMax = 2000;
+  let countMax = 2001;
   let margin = {
     top:    15,
-    right:  35, // leave space for y-axis
-    bottom: 30, // leave space for x-axis
+    right:  100, // leave space for y-axis and label
+    bottom: 40, // leave space for x-axis and label
     left:   10
   };
   //calculate how much space we have to plot
   let bounds = svg.node().getBoundingClientRect();
-  console.log(bounds);
   let plotWidth = bounds.width - margin.right - margin.left;
   let plotHeight = bounds.height - margin.top - margin.bottom;
-  console.log(plotHeight);
-  //set the spacing for the y axis
+  //set the spacing rules for the y axis
   let countScale = d3.scaleLinear()
   .domain([countMin, countMax]) // min to max count
   .range([plotHeight, 0]) // height of the space
   .nice(); //rounds so you don't end up with half a pixel
-  //set the spacing for the x axis
+  //set the spacing rules for the x axis
   let dayScale = d3.scaleBand()
   .domain(days) // all days
   .rangeRound([0, plotWidth]) //round so you don't end up with half a pixel
@@ -76,11 +74,22 @@ var drawBarChart = function(count)
     // notice it is at the top of our svg
     // we need to translate/shift it down to the bottom
     xGroup.attr("transform", "translate(0," + plotHeight + ")");
-
-    // do the same for our y axix
+    let xLabel = plot.append("text")
+      .attr("transform",
+            "translate(" + ( plotWidth )/2 + " ," +
+                           ( margin.bottom - 10 + plotHeight) + ")")
+      .style("text-anchor", "middle")
+      .text("Day of the Week");
+    // do the same for our y axis
     let yGroup = plot.append("g").attr("id", "y-axis");
     yGroup.call(yAxis);
     yGroup.attr("transform", "translate(" + plotWidth + ",0)");
+    let yLabel = plot.append("text")
+      .attr("transform",
+            "translate(" + (plotWidth + margin.right-30)+ " ," +
+                           (plotHeight/2) + ") rotate(90)")
+      .style("text-anchor", "middle")
+      .text("Number of Crimes");
   }
   else {
     // we need to do this so our chart updates
@@ -114,6 +123,3 @@ var drawBarChart = function(count)
      });
 
 }
-
-
-//draw

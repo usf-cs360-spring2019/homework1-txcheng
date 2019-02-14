@@ -34,54 +34,106 @@
       <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
 
-          <div class="navbar-brand">
-            <a class="navbar-item" href="index.html">
-              <span class="icon">
-                <i class="fas fa-home"></i>
-              </span>
-              <span>Home</span>
-            </a>
-          </div>
 
-          <div id="main-navbar" class="navbar-menu">
-            <a class="navbar-item" href="vis1.html">
-              <span class="icon">
-                <i class="fas fa-chart-area"></i>
-              </span>
-              <span>Visualization 1</span>
-            </a>
-            <a class="navbar-item" href="vis2.html">
-              <span class="icon">
-                <i class="fas fa-chart-area"></i>
-              </span>
-              <span>Visualization 2</span>
-            </a>
-            <a class="navbar-item" href="vis3.html">
-              <span class="icon">
-                <i class="fas fa-chart-area"></i>
-              </span>
-              <span>Visualization 3</span>
-            </a>
-          </div>
+                    <div class="navbar-brand">
+                      <a class="navbar-item" href="index.html">
+                        <span class="icon">
+                          <i class="fas fa-home"></i>
+                        </span>
+                        <span>Home</span>
+                      </a>
+                    </div>
 
-          <div class="navbar-end">
-            <a class="navbar-item" href="#grade">
-              <span class="icon">
-                <i class="fas fa-tasks"></i>
-              </span>
-              <span>Grade</span>
-            </a>
+                    <div id="main-navbar" class="navbar-menu">
+                      <a class="navbar-item" href="vis1.html">
+                        <span class="icon">
+                          <i class="fas fa-chart-area"></i>
+                        </span>
+                        <span>Visualization 1</span>
+                      </a>
+                      <a class="navbar-item" href="vis2.html">
+                        <span class="icon">
+                          <i class="fas fa-chart-area"></i>
+                        </span>
+                        <span>Visualization 2</span>
+                      </a>
+                      <a class="navbar-item" href="vis3.html">
+                        <span class="icon">
+                          <i class="fas fa-chart-area"></i>
+                        </span>
+                        <span>Visualization 3</span>
+                      </a>
+                    </div>
 
-            <a class="navbar-item" href="#about">
-              <span class="icon">
-                <i class="fas fa-info-circle"></i>
-              </span>
-              <span>About</span>
-            </a>
-          </div>
+                    <div class="navbar-end">
+                      <a class="navbar-item" href="#grade">
+                        <span class="icon">
+                          <i class="fas fa-tasks"></i>
+                        </span>
+                        <span>Grade</span>
+                      </a>
+
+                      <a class="navbar-item" href="#about">
+                        <span class="icon">
+                          <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>About</span>
+                      </a>
+                    </div>
 
         </nav>
       </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container content">
+      <!-- todo: modify as necessary (or move visualizations to separate pages) -->
+      <h2>Visualization 1 Prototype</h2>
+
+        <img src = "vis3.png">
+    </div>
+  </section>
+  <!-- todo: add sections as necessary -->
+  <section class="section">
+    <div class="container content">
+      <!-- todo: modify as necessary (or move visualizations to separate pages) -->
+      <h2>Visualization 1</h2>
+
+      <svg width="100%" height="400" style="background-color: whitesmoke; border: 1px solid black;">
+      </svg>
+      <!-- include d3.js -->
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <script src="vis3.js"></script>
+      <script type="text/javascript">
+        //load the dataset
+        d3.json("data.json").then(function(data){
+           console.log("Data loaded:");
+           console.log(data[0]["Incident Time"]);
+           //generate my map
+           let chart = crimePerWeekday(data);
+           console.log(chart);
+           drawBarChart(chart);
+         });
+      </script>
+
+      <h3>Interpretation</h3>
+
+      <p>
+        This visualization tracks the number of crimes committed on each day of the week over the course of Dec 2018.
+      </p>
+
+      <h3>Discussion</h3>
+
+      <p>
+        The primary goal of this visualization was to see if the work week cycle (weekend vs weekday) affected the number of crimes commited during that day. As you can see, it appears that there is an increase in crime Saturday-Monday in comparison withe Tuesday-Friday.
+      </p>
+
+      <h3>Credit</h3>
+
+      <p>
+        Most of the bar chart generation code comes from Sophie Engle's blockbuilder example here: https://blockbuilder.org/sjengle/1e23258249638a508426470a48ff2924. <br>
+        The data is from here: https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Present/wg3w-h783
+      </p>
     </div>
   </section>
 
