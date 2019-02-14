@@ -2,7 +2,8 @@ var drawChart = function(data)
 {
   let svg = d3.select("body").select("svg");
   let districts = ["Bayview", "Central", "Ingleside", "Mission", "Northern", "Park", "Richmond", "Southern", "Taraval", "Tenderloin"];
-  let crimes = ["Assault", "Burglary", "Disorderly Conduct", "Drug Offense", "Fraud","Lost Property","Malicious Mischief","Missing Person","Motor Vehicle Theft","Non-Criminal","Offences Against The Family And Children","Other Miscellaneous","Recovered Vehicle","Robbery","Suspicious Occ","Traffic Violation Arrest","Warrant"]
+  let crimes = ["Assault", "Burglary", "Disorderly Conduct", "Drug Offense", "Fraud","Lost Property","Malicious Mischief","Missing Person","Motor Vehicle Theft","Non-Criminal","Offences Against The Family And Children","Other Miscellaneous","Recovered Vehicle","Robbery","Suspicious Occ","Traffic Violation Arrest","Warrant"];
+
   let bounds = svg.node().getBoundingClientRect();
   console.log(bounds);
   let margin = {
@@ -59,4 +60,6 @@ var drawChart = function(data)
       .style("text-anchor", "middle")
       .text("Type of Crime");
     }
+
+
 }

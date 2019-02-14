@@ -90,8 +90,8 @@
     <div class="container content">
       <!-- todo: modify as necessary (or move visualizations to separate pages) -->
       <h2>Visualization 3 Prototype</h2>
-        <img src = "vis1.PNG">
-        <p>https://github.com/usf-cs360-spring2019/homework1-txcheng/blob/gh-pages/vis1.PNG</p>
+        <img src = "vis4.PNG">
+        <p>https://github.com/usf-cs360-spring2019/homework1-txcheng/blob/gh-pages/vis4.PNG</p>
     </div>
   </section>
 
@@ -105,24 +105,13 @@
 
       <!-- include d3.js -->
       <script src="https://d3js.org/d3.v5.min.js"></script>
-      <script src="vis1.js"></script>
+      <script src="https://d3js.org/d3-color.v1.min.js"></script>
+
+      <script src="vis4.js"></script>
       <script type="text/javascript">
         //load the dataset
         d3.json("data.json").then(function (data) {
-            var count = d3.map();
-            data.forEach(function(d){
-              var newItem = {};
-              newItem.district =  data["Police District"];
-              newItem.category = data["Incident Category"];
-              if(count.has(newItem))
-              {
-                  count.set(newItem,count.get(newItem)+1);
-              }
-              else {
-                  count.set(newItem,1);
-              }
-            });
-            console.log(count);
+            var count = crime(data);
             drawChart(count);
           });
       </script>
@@ -130,19 +119,22 @@
       <h3>Interpretation</h3>
 
       <p>
-        This visualization tracks frequency of each type of reported crime and the particular police district the report was associated with during Dec 2018.
+        This visualization tracks frequency of each type of reported crime during Dec 2018.
       </p>
 
       <h3>Discussion</h3>
 
       <p>
-      The purpose of this visualization was to see if a particular region in San Francisco was either more crime heavy or had an unusual amount of a type of crime. However, without general population data, it is impossible to make such a conclusion from this heatmap.
-      </p>
+      The purpose of this visualization was to see if a particular crime is more frequent than another.  </p>
 
       <h3>Credit</h3>
 
       <p>
-        A most of the bar chart generation code comes from Sophie Engle's blockbuilder example here: https://blockbuilder.org/sjengle/1e23258249638a508426470a48ff2924. <br>
+        A most of the chart generation code comes from Sophie Engle's blockbuilder example here: https://blockbuilder.org/sjengle/1e23258249638a508426470a48ff2924. <br>
+        I also grabbed and looked at code from these sources:<br>
+        https://www.tutorialsteacher.com/d3js/create-pie-chart-using-d3js <br>
+        https://stackoverflow.com/questions/32298837/how-to-add-a-nice-legend-to-a-d3-pie-chart<br>
+
         The data is from here: https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Present/wg3w-h783
        </p>
     </div>
@@ -150,93 +142,6 @@
 
   <!-- separator between sections -->
   <hr class="container">
-
-
-  <!-- grade section -->
-  <section class="section">
-    <div class="container content">
-      <h2 id="grade">
-        Expected Grade
-      </h2>
-
-      <!-- todo: modify to indicate your expected grade -->
-      <table class="table is-hoverable">
-        <thead>
-          <tr>
-            <th>Done?</th>
-            <th>Letter</th>
-            <th>Justification</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <!-- d level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-check-circle has-text-success"></i>
-            </td>
-
-            <td class="has-text-centered">
-              D
-            </td>
-
-            <td>
-              Prototype 3 unique visualizations in Tableau - Completed
-            </td>
-          </tr>
-
-          <!-- c level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-check-circle has-text-success"></i>
-            </td>
-
-            <td class="has-text-centered">
-              C
-            </td>
-
-            <td>
-              Implement 1 of the Tableau prototypes in D3 - Completed
-            </td>
-          </tr>
-
-          <!-- b level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-check-circle has-text-success"></i>
-            </td>
-
-            <td class="has-text-centered">
-              B
-            </td>
-
-            <td>
-              Implement 2 of the Tableau prototypes in D3 - Completed
-            </td>
-          </tr>
-
-
-          <!-- a level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-check-circle has-text-success"></i>
-            </td>
-
-            <td class="has-text-centered">
-              A
-            </td>
-
-            <td>
-              Implement 3 of the Tableau prototypes in D3 - Completed
-            </td>
-          </tr>
-        <tbody>
-      </table>
-
-      <p>
-      </p>
-    </div>
-  </section>
 
   <!-- about section -->
   <section class="section">
@@ -249,7 +154,7 @@
         <div class="media-left">
           <p class="image is-128x128">
             <!-- todo: replace with your profile image -->
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+            <img src="bobabunny.jpg">
           </p>
         </div>
 
